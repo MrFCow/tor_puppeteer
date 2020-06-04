@@ -12,7 +12,7 @@ async function setup(){
 
 	browser = await puppeteer.launch({
 		args, 
-		headless:false,
+		//headless:false,
 		ignoreHTTPSErrors:true,
 		//executablePath : '/usr/bin/chromium-browser', // WSL only
 	});
@@ -20,7 +20,7 @@ async function setup(){
 	console.log("browser object ready");
 	
 	page = await browser.newPage();
-	//await useProxy(page, proxy);
+	await useProxy(page, proxy);
 	//page.on('error', (error) => console.error(error));
 	console.log("page object ready");
 
@@ -30,7 +30,7 @@ async function setup(){
 async function checkUsingTor(){
 	// await page.goto('http://google.com');
 	// console.log('google HTTP')
-	await page.goto('https://google.com');console.log('google HTTPS')
+	//await page.goto('https://google.com');console.log('google HTTPS')
 	await page.goto('https://check.torproject.org/');
 	console.log("check Tor page accessed");
 	const isUsingTor = await page.$eval('body', el =>
