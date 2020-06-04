@@ -50,13 +50,15 @@ async function accessPage(url){
 	if (!isUsingTor){
 		return;
 	}
-
+	const httpPrefix = /http[s]+:\/\//
+	
 	await page.goto(url);
-	await page.screenshot({path: `${url}.png`})
+	await page.screenshot({path: `${url.replace(httpPrefix,"")}.png`})
 
 	await browser.close();
 }
 
+// Main
 (async () => {
 	await setup();
 	await accessPage('https://www.google.com');
