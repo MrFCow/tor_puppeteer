@@ -1,0 +1,21 @@
+{
+  "name": "tor_puppeteer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start_tor": "tor &",
+    "stop_tor": "killall tor",
+    "check_tor": "curl --socks5 localhost:9050 --socks5-hostname localhost:9050 -s https://check.torproject.org/ | cat | grep -m 1 Congratulations | xargs",
+    "check_ip": "curl ifconfig.co && curl http://ifconfig.co/country && curl http://ifconfig.co/city",
+    "check_tor_ip": "torsocks wget -qO - https://api.ipify.org | awk '{cmd=\"curl https://ipapi.co/\" $1 \"/json\"}; system(cmd)'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^3.1.0",
+    "puppeteer-page-proxy": "^1.2.5"
+  }
+}
