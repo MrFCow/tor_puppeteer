@@ -1,3 +1,4 @@
+require("dotenv").config();
 const puppeteer = require('puppeteer');
 const useProxy = require('puppeteer-page-proxy');
 
@@ -5,7 +6,8 @@ let browser;
 let page;
 
 async function setup(){
-	const args = ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu' ];
+	//const args = ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu' ];
+	const args = []
 	const proxy = 'socks5://localhost:9050';
 
 	browser = await puppeteer.launch({

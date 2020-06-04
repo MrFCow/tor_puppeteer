@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "export CHROME_DEVEL_SANDBOX=chrome/chrome_sandbox node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start_tor": "tor &",
     "stop_tor": "killall tor",
@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "puppeteer": "^3.1.0",
     "puppeteer-page-proxy": "^1.2.5"
   }
